@@ -1,9 +1,9 @@
-package exam;
+package btvn.exam;
 
 import java.io.Serializable;
 
 public class Laptop implements Serializable {
-    private static int VALUE = 1;
+    private static int VALUE = 0;
     private  int id;
     private String brand;
     private String color;

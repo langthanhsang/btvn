@@ -1,4 +1,6 @@
 package btvn.bt2;
 
-public class Lemon extends Fruit{
+import btvn.bt2.Fruit;
+
+public class Lemon extends Fruit {
 }

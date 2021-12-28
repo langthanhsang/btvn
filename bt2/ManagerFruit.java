@@ -1,6 +1,7 @@
 package btvn.bt2;
 
-import java.io.File;
+import btvn.bt2.Fruit;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 

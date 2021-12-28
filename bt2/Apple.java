@@ -1,5 +1,5 @@
 package btvn.bt2;
 
-public class Apple extends Fruit{
+public class Apple extends Fruit {
 
 }

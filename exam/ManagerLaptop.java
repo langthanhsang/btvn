@@ -1,4 +1,4 @@
-package exam;
+package btvn.exam;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -11,7 +11,6 @@ public class ManagerLaptop {
     public Laptop createLaptop() {
         System.out.println("nhập hãng :");
         String brand = scanner.nextLine();
-        scanner.nextLine();
         System.out.println("nhập màu sắc :");
         String color = scanner.nextLine();
         System.out.println("nhập giá :");
@@ -132,40 +131,64 @@ public class ManagerLaptop {
         return laptop;
     }
 
-    public void writeFile(File file) {
-        try {
-            OutputStream os = new FileOutputStream(file);
-            ObjectOutputStream oos = new ObjectOutputStream(os);
-            for (Laptop laptop : laptops) {
-                oos.writeObject(laptop);
-            }
-            oos.flush();
-            oos.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+    public void writeBrand(ArrayList<String> brandList, String pathName) throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(pathName));
+        for (String string : brandList) {
+            bufferedWriter.write(string + "\n");
+        }
+        bufferedWriter.close();
+    }
+
+    public void readBrand(String pathName) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(pathName));
+        String line;
+        while ((line = bufferedReader.readLine()) != null){
+            System.out.println(line);
         }
     }
 
-    public void readFile(File f) {
-        try {
-
-            InputStream is = new FileInputStream(f);
-            ObjectInputStream ois = new ObjectInputStream(is);
-            Laptop laptop = null;
-            while (true){
-                Object oj = ois.readObject();
-                if(oj == null){
-                    break;
-                }
-                if (oj != null){
-                    laptop = (Laptop) oj;
-                    this.laptops.add(laptop);
-                }
-            }
-            ois.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+    public ArrayList<String> listBrand(){
+        ArrayList<String>strings = new ArrayList<>();
+        for (Laptop laptop: laptops) {
+         strings.add(laptop.getBrand());
         }
+        return strings;
     }
+
+//    public void writeFile(File file) {
+//        try {
+//            OutputStream os = new FileOutputStream(file);
+//            ObjectOutputStream oos = new ObjectOutputStream(os);
+//            for (Laptop laptop : laptops) {
+//                oos.writeObject(laptop);
+//            }
+//            oos.flush();
+//            oos.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    public void readFile(File f) {
+//        try {
+//
+//            InputStream is = new FileInputStream(f);
+//            ObjectInputStream ois = new ObjectInputStream(is);
+//            Laptop laptop = null;
+//            while (true){
+//                Object oj = ois.readObject();
+//                if(oj == null){
+//                    break;
+//                }
+//                if (oj != null){
+//                    laptop = (Laptop) oj;
+//                    this.laptops.add(laptop);
+//                }
+//            }
+//            ois.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 }
